@@ -1,6 +1,7 @@
 const express = require("express");
 const Trip = require("../models/Trip");
 const authMiddleware = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");
 
 const router = express.Router();
 
@@ -39,6 +40,8 @@ router.post("/", authMiddleware, async (req, res) => {
       trip,
     });
   } catch (error) {
+    console.error("CREATE TRIP ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
       error: error.message,
@@ -55,12 +58,83 @@ router.get("/", authMiddleware, async (req, res) => {
 
     res.json(trips);
   } catch (error) {
+    console.error("GET TRIPS ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
       error: error.message,
     });
   }
 });
+
+// UPLOAD TRIP PHOTO
+router.post(
+  "/:id/upload",
+  authMiddleware,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({
+          message: "Please upload an image",
+        });
+      }
+
+      const imageUrl = req.file.path;
+
+      console.log("IMAGE URL:", imageUrl);
+
+      // Verify trip ownership first
+      const trip = await Trip.findOne({
+        _id: req.params.id,
+        user: req.user.userId,
+      });
+
+      if (!trip) {
+        return res.status(404).json({
+          message: "Trip not found or you are not the owner",
+        });
+      }
+
+      const coverImage = trip.coverImage || imageUrl;
+
+      // Add new photo without removing existing photos
+      const updateResult = await Trip.collection.updateOne(
+        {
+          _id: trip._id,
+        },
+        {
+          $set: {
+            coverImage: coverImage,
+          },
+          $push: {
+            photos: imageUrl,
+          },
+        }
+      );
+
+      console.log("MONGODB UPDATE RESULT:", updateResult);
+
+      // Fetch updated document
+      const updatedTrip = await Trip.findById(trip._id).lean();
+
+      console.log("UPDATED TRIP:", updatedTrip);
+
+      res.status(200).json({
+        message: "Photo uploaded successfully",
+        trip: updatedTrip,
+        imageUrl: imageUrl,
+      });
+    } catch (error) {
+      console.error("UPLOAD ERROR:", error);
+
+      res.status(500).json({
+        message: "Upload failed",
+        error: error.message,
+      });
+    }
+  }
+);
 
 // GET SINGLE TRIP
 router.get("/:id", authMiddleware, async (req, res) => {
@@ -78,6 +152,8 @@ router.get("/:id", authMiddleware, async (req, res) => {
 
     res.json(trip);
   } catch (error) {
+    console.error("GET SINGLE TRIP ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
       error: error.message,
@@ -122,6 +198,8 @@ router.put("/:id", authMiddleware, async (req, res) => {
       trip,
     });
   } catch (error) {
+    console.error("UPDATE TRIP ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
       error: error.message,
@@ -149,6 +227,8 @@ router.delete("/:id", authMiddleware, async (req, res) => {
       message: "Trip deleted successfully",
     });
   } catch (error) {
+    console.error("DELETE TRIP ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
       error: error.message,

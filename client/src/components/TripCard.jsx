@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function TripCard({ trip, onDelete, onEdit }) {
+  const navigate = useNavigate();
+
   return (
     <div
       style={{
@@ -8,6 +12,22 @@ function TripCard({ trip, onDelete, onEdit }) {
         borderRadius: "8px",
       }}
     >
+      {/* COVER IMAGE */}
+      {trip.coverImage && (
+        <img
+          src={trip.coverImage}
+          alt={trip.title}
+          style={{
+            width: "100%",
+            maxWidth: "400px",
+            height: "220px",
+            objectFit: "cover",
+            borderRadius: "8px",
+            marginBottom: "10px",
+          }}
+        />
+      )}
+
       <h3>{trip.title}</h3>
 
       <p>
@@ -39,10 +59,22 @@ function TripCard({ trip, onDelete, onEdit }) {
         </p>
       )}
 
-      <button onClick={() => onEdit(trip)}>
+      {/* VIEW DETAILS */}
+      <button
+        onClick={() => navigate(`/trips/${trip._id}`)}
+      >
+        📸 View Details
+      </button>
+
+      {/* EDIT */}
+      <button
+        onClick={() => onEdit(trip)}
+        style={{ marginLeft: "10px" }}
+      >
         ✏️ Edit
       </button>
 
+      {/* DELETE */}
       <button
         onClick={() => onDelete(trip._id)}
         style={{ marginLeft: "10px" }}

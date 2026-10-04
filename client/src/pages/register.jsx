@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,6 +16,7 @@ function Register() {
     try {
       await axios.post("http://localhost:5000/api/auth/register", {
         name,
+        username,
         email,
         password,
       });
@@ -38,6 +40,17 @@ function Register() {
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <br /><br />
+
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
         />
 
         <br /><br />
@@ -47,6 +60,7 @@ function Register() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <br /><br />
@@ -56,6 +70,7 @@ function Register() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <br /><br />

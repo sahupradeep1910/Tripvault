@@ -86,7 +86,6 @@ function Dashboard() {
         }
       );
 
-      // Remove deleted trip from the UI
       setTrips((prevTrips) =>
         prevTrips.filter((trip) => trip._id !== tripId)
       );
@@ -117,7 +116,26 @@ function Dashboard() {
 
       <p>Email: {user.email}</p>
 
-      <button onClick={handleLogout}>Logout</button>
+      {/* PROFILE LINKS */}
+      <button
+        onClick={() => navigate(`/profile/${user.username}`)}
+      >
+        👤 My Profile
+      </button>
+
+      <button
+        onClick={() => navigate("/edit-profile")}
+        style={{ marginLeft: "10px" }}
+      >
+        ✏️ Edit Profile
+      </button>
+
+      <button
+        onClick={handleLogout}
+        style={{ marginLeft: "10px" }}
+      >
+        Logout
+      </button>
 
       <hr />
 
@@ -135,7 +153,7 @@ function Dashboard() {
       {showTripForm && (
         <TripForm
           editingTrip={editingTrip}
-          
+
           // CREATE SUCCESS
           onTripCreated={(newTrip) => {
             setTrips((prevTrips) => [newTrip, ...prevTrips]);

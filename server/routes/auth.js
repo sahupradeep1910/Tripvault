@@ -10,28 +10,40 @@ const authMiddleware = require("../middleware/authMiddleware");
 // REGISTER
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, username, email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name || !username || !email || !password) {
       return res.status(400).json({
-        message: "All fields are required",
+        message: "Name, username, email and password are required",
       });
     }
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({
+      $or: [{ email }, { username }],
+    });
 
     if (existingUser) {
-      return res.status(400).json({
-        message: "User already exists",
-      });
+      if (existingUser.email === email) {
+        return res.status(400).json({
+          message: "Email already exists",
+        });
+      }
+
+      if (existingUser.username === username.toLowerCase()) {
+        return res.status(400).json({
+          message: "Username already exists",
+        });
+      }
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
       name,
+      username,
       email,
       password: hashedPassword,
+      bio: "",
     });
 
     await user.save();
@@ -40,8 +52,11 @@ router.post("/register", async (req, res) => {
       message: "User registered successfully",
     });
   } catch (error) {
+    console.error("REGISTER ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
+      error: error.message,
     });
   }
 });
@@ -87,12 +102,15 @@ router.post("/login", async (req, res) => {
       token,
     });
   } catch (error) {
+    console.error("LOGIN ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
     });
   }
 });
 
+// GET CURRENT USER
 router.get("/me", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
@@ -105,6 +123,8 @@ router.get("/me", authMiddleware, async (req, res) => {
 
     res.json(user);
   } catch (error) {
+    console.error("GET ME ERROR:", error);
+
     res.status(500).json({
       message: "Server error",
     });
