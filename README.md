@@ -2,23 +2,24 @@
 
 A secure MERN stack travel memory journal application.
 
-TripVault is a full-stack web application built using the MERN stack. It allows users to create an account, securely log in, and manage their personal travel memories through a personalized dashboard.
+TripVault is a full-stack web application built using the MERN stack. It allows users to create an account, securely log in, manage their personal travel memories, upload trip photos, and maintain a public travel profile.
+
+---
 
 ## 🎯 Project Objective
 
-The objective of TripVault is to provide users with a secure platform to manage their personal travel memories.
+The objective of TripVault is to provide users with a secure platform to manage and share their travel memories.
 
-The Week 2 objective focuses on implementing complete **Trip Management and CRUD Operations** using Node.js, Express.js, MongoDB, and React.
+The application provides authenticated users with:
 
-The application allows authenticated users to:
-
-- Create new trips
-- View their personal trips
-- View individual trip details
-- Update existing trips
-- Delete trips
-- Manage trip information through a React-based dashboard
-- Access only their own trip data through ownership validation
+- User registration and secure login
+- Personal trip management
+- Complete Trip CRUD operations
+- Trip photo uploads using Cloudinary
+- Cover images and multiple trip photos
+- Public travel profiles
+- Profile bio management
+- Public trip and photo display
 
 ---
 
@@ -27,10 +28,11 @@ The application allows authenticated users to:
 ### 🔐 Authentication
 
 - User Registration
+- Unique Username
 - Secure User Login
 - Password Hashing using bcrypt
 - JWT-based Authentication
-- Protected User Route
+- Protected Routes
 - Personalized Dashboard
 - Logout Functionality
 
@@ -48,8 +50,43 @@ The application allows authenticated users to:
 - User-specific trip data
 - Protected Trip CRUD APIs
 - Ownership validation for update and delete operations
-- Empty state when no trips are available
 - Loading and error handling
+
+### 📸 Trip Photo Uploads
+
+- Upload trip images using Cloudinary
+- Multer-based image upload middleware
+- Cloudinary image storage
+- Cover image for trips
+- Multiple photos for each trip
+- Photo grid on Trip Details page
+- Photo grid on Public Profile
+- Supported image formats:
+  - JPG
+  - JPEG
+  - PNG
+  - WEBP
+- Maximum image size of 5 MB
+
+### 👤 Public Profiles
+
+- Unique username
+- Public profile accessible without login
+- Profile name
+- Username
+- Profile bio
+- Public trip grid
+- Trip cover images
+- Multiple trip photos
+- Public profile API without authentication
+- Safe public profile fields without exposing email or password
+
+### ✏️ Profile Management
+
+- My Profile link from Dashboard
+- Edit Profile page
+- Update profile bio
+- Protected profile update API
 
 ### ⚙️ Application
 
@@ -57,7 +94,9 @@ The application allows authenticated users to:
 - React + Vite Frontend
 - Client-side Routing using React Router
 - REST API using Express.js
-- Frontend-Backend communication using Axios
+- Frontend-backend communication using Axios
+- JWT authentication
+- Cloudinary image storage
 
 ---
 
@@ -83,6 +122,9 @@ The application allows authenticated users to:
 - JSON Web Token (JWT)
 - dotenv
 - CORS
+- Multer
+- Cloudinary
+- multer-storage-cloudinary
 
 ---
 
@@ -90,7 +132,6 @@ The application allows authenticated users to:
 
 ```text
 tripvault/
-
 │
 ├── client/
 │   ├── src/
@@ -99,9 +140,12 @@ tripvault/
 │   │   │   └── TripForm.jsx
 │   │   │
 │   │   ├── pages/
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   └── Dashboard.jsx
+│   │   │   ├── login.jsx
+│   │   │   ├── register.jsx
+│   │   │   ├── dashboard.jsx
+│   │   │   ├── TripDetails.jsx
+│   │   │   ├── PublicProfile.jsx
+│   │   │   └── EditProfile.jsx
 │   │   │
 │   │   ├── App.jsx
 │   │   └── main.jsx
@@ -111,7 +155,8 @@ tripvault/
 │
 ├── server/
 │   ├── middleware/
-│   │   └── authMiddleware.js
+│   │   ├── authMiddleware.js
+│   │   └── upload.js
 │   │
 │   ├── models/
 │   │   ├── user.js
@@ -119,10 +164,12 @@ tripvault/
 │   │
 │   ├── routes/
 │   │   ├── auth.js
-│   │   └── trips.js
+│   │   ├── trips.js
+│   │   └── profile.js
 │   │
 │   ├── index.js
-│   └── package.json
+│   ├── package.json
+│   └── .env
 │
 ├── .gitignore
 └── README.md
