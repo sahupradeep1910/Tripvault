@@ -1,5 +1,7 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../api";
 
 function TripForm({
   onTripCreated,
@@ -86,7 +88,7 @@ function TripForm({
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/trips/${tripId}/upload`,
+        `${API_BASE_URL}/api/trips/${tripId}/upload`,
         imageData,
         {
           headers: {
@@ -96,22 +98,13 @@ function TripForm({
       );
 
       console.log("✅ UPLOAD RESPONSE:", response.data);
-      console.log(
-        "🖼️ COVER IMAGE:",
-        response.data.trip?.coverImage
-      );
-      console.log(
-        "📷 PHOTOS:",
-        response.data.trip?.photos
-      );
+      console.log("🖼️ COVER IMAGE:", response.data.trip?.coverImage);
+      console.log("📷 PHOTOS:", response.data.trip?.photos);
 
       return response.data.trip;
     } catch (error) {
       console.error("❌ FRONTEND UPLOAD ERROR:", error);
-      console.error(
-        "❌ SERVER RESPONSE:",
-        error.response?.data
-      );
+      console.error("❌ SERVER RESPONSE:", error.response?.data);
 
       throw error;
     }
@@ -133,7 +126,7 @@ function TripForm({
         console.log("✏️ Updating trip...");
 
         const response = await axios.put(
-          `http://localhost:5000/api/trips/${editingTrip._id}`,
+          `${API_BASE_URL}/api/trips/${editingTrip._id}`,
           {
             ...formData,
             rating: formData.rating
@@ -165,7 +158,7 @@ function TripForm({
         console.log("➕ Creating new trip...");
 
         const response = await axios.post(
-          "http://localhost:5000/api/trips",
+          `${API_BASE_URL}/api/trips`,
           {
             ...formData,
             rating: formData.rating
@@ -209,8 +202,7 @@ function TripForm({
       console.error("❌ TRIP FORM ERROR:", error);
 
       setError(
-        error.response?.data?.message ||
-          "Something went wrong"
+        error.response?.data?.message || "Something went wrong"
       );
     } finally {
       setLoading(false);
@@ -220,9 +212,7 @@ function TripForm({
   return (
     <form onSubmit={handleSubmit}>
       <h2>
-        {editingTrip
-          ? "Edit Trip ✏️"
-          : "Create New Trip ✈️"}
+        {editingTrip ? "Edit Trip ✏️" : "Create New Trip ✈️"}
       </h2>
 
       {error && <p>{error}</p>}

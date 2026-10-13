@@ -1,8 +1,10 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import TripForm from "../components/TripForm";
 import TripCard from "../components/TripCard";
+import API_BASE_URL from "../api";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
@@ -23,9 +25,9 @@ function Dashboard() {
       }
 
       try {
-        // Fetch logged-in user
+        // Fetch logged-in user details
         const userResponse = await axios.get(
-          "http://localhost:5000/api/auth/me",
+          `${API_BASE_URL}/api/auth/me`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -37,7 +39,7 @@ function Dashboard() {
 
         // Fetch user's trips
         const tripsResponse = await axios.get(
-          "http://localhost:5000/api/trips",
+          `${API_BASE_URL}/api/trips`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -47,10 +49,20 @@ function Dashboard() {
 
         setTrips(tripsResponse.data);
       } catch (error) {
-        console.error("Error fetching dashboard data:", error);
+        console.error(
+          "Error fetching dashboard data:",
+          error
+        );
 
-        localStorage.removeItem("token");
-        navigate("/login");
+        if (error.response?.status === 401) {
+          localStorage.removeItem("token");
+          navigate("/login");
+        } else {
+          alert(
+            error.response?.data?.message ||
+              "Failed to load dashboard data. Please try again."
+          );
+        }
       } finally {
         setLoadingTrips(false);
       }
@@ -78,7 +90,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/trips/${tripId}`,
+        `${API_BASE_URL}/api/trips/${tripId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -93,7 +105,8 @@ function Dashboard() {
       console.error("Error deleting trip:", error);
 
       alert(
-        error.response?.data?.message || "Failed to delete trip"
+        error.response?.data?.message ||
+          "Failed to delete trip. Please try again."
       );
     }
   };
@@ -105,7 +118,7 @@ function Dashboard() {
   };
 
   if (!user) {
-    return <p>Loading...</p>;
+    return <p>Loading dashboard...</p>;
   }
 
   return (
@@ -147,21 +160,22 @@ function Dashboard() {
           setShowTripForm(!showTripForm);
         }}
       >
-        {showTripForm ? "Close Form" : "➕ Create New Trip"}
+        {showTripForm
+          ? "Close Form"
+          : "➕ Create New Trip"}
       </button>
 
       {showTripForm && (
         <TripForm
           editingTrip={editingTrip}
-
-          // CREATE SUCCESS
           onTripCreated={(newTrip) => {
-            setTrips((prevTrips) => [newTrip, ...prevTrips]);
+            setTrips((prevTrips) => [
+              newTrip,
+              ...prevTrips,
+            ]);
             setShowTripForm(false);
             setEditingTrip(null);
           }}
-
-          // UPDATE SUCCESS
           onTripUpdated={(updatedTrip) => {
             setTrips((prevTrips) =>
               prevTrips.map((trip) =>
@@ -174,8 +188,6 @@ function Dashboard() {
             setEditingTrip(null);
             setShowTripForm(false);
           }}
-
-          // CANCEL EDIT
           onCancelEdit={() => {
             setEditingTrip(null);
             setShowTripForm(false);
@@ -187,7 +199,8 @@ function Dashboard() {
         <p>Loading trips...</p>
       ) : trips.length === 0 ? (
         <p>
-          You have no trips yet. Start adding your travel memories! ✈️
+          You have no trips yet. Start adding your travel
+          memories! ✈️
         </p>
       ) : (
         <div>

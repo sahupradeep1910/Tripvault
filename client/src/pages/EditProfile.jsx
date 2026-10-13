@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../api";
 
 function EditProfile() {
   const navigate = useNavigate();
@@ -23,7 +25,7 @@ function EditProfile() {
 
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/me",
+          `${API_BASE_URL}/api/auth/me`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +57,7 @@ function EditProfile() {
       setError("");
 
       await axios.put(
-        "http://localhost:5000/api/users/profile",
+        `${API_BASE_URL}/api/users/profile`,
         {
           bio,
         },
@@ -100,9 +102,7 @@ function EditProfile() {
       </p>
 
       <form onSubmit={handleSubmit}>
-        <label>
-          Bio
-        </label>
+        <label>Bio</label>
 
         <br />
 
@@ -119,7 +119,8 @@ function EditProfile() {
           }}
         />
 
-        <br /><br />
+        <br />
+        <br />
 
         <button type="submit" disabled={saving}>
           {saving ? "Saving..." : "Save Profile"}

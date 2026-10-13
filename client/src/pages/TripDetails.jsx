@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import API_BASE_URL from "../api";
 
 function TripDetails() {
   const { id } = useParams();
@@ -21,7 +23,7 @@ function TripDetails() {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/trips/${id}`,
+          `${API_BASE_URL}/api/trips/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -99,8 +101,7 @@ function TripDetails() {
 
       {trip.description && (
         <p>
-          <strong>Description:</strong>{" "}
-          {trip.description}
+          <strong>Description:</strong> {trip.description}
         </p>
       )}
 

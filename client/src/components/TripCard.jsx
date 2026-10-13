@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 
 function TripCard({ trip, onDelete, onEdit }) {
@@ -61,6 +62,7 @@ function TripCard({ trip, onDelete, onEdit }) {
 
       {/* VIEW DETAILS */}
       <button
+        type="button"
         onClick={() => navigate(`/trips/${trip._id}`)}
       >
         📸 View Details
@@ -68,6 +70,7 @@ function TripCard({ trip, onDelete, onEdit }) {
 
       {/* EDIT */}
       <button
+        type="button"
         onClick={() => onEdit(trip)}
         style={{ marginLeft: "10px" }}
       >
@@ -76,6 +79,7 @@ function TripCard({ trip, onDelete, onEdit }) {
 
       {/* DELETE */}
       <button
+        type="button"
         onClick={() => onDelete(trip._id)}
         style={{ marginLeft: "10px" }}
       >

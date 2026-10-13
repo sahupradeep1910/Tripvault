@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import API_BASE_URL from "../api";
 
 function PublicProfile() {
   const { username } = useParams();
@@ -13,8 +15,11 @@ function PublicProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        setLoading(true);
+        setError("");
+
         const response = await axios.get(
-          `http://localhost:5000/api/users/${username}/profile`
+          `${API_BASE_URL}/api/users/${username}/profile`
         );
 
         setProfile(response.data);
@@ -58,7 +63,6 @@ function PublicProfile() {
 
   return (
     <div style={{ padding: "20px" }}>
-      
       {/* PROFILE INFO */}
       <div
         style={{
@@ -146,8 +150,7 @@ function PublicProfile() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns:
-                        "repeat(3, 1fr)",
+                      gridTemplateColumns: "repeat(3, 1fr)",
                       gap: "8px",
                     }}
                   >

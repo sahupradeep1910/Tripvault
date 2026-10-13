@@ -18,30 +18,31 @@ app.use("/api/auth", authRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/users", profileRoutes);
 
-// GLOBAL ERROR HANDLER
-app.use((err, req, res, next) => {
-  console.error("GLOBAL ERROR:", err);
-  console.error("ERROR MESSAGE:", err?.message);
-  console.error("ERROR STACK:", err?.stack);
-
-  res.status(err?.statusCode || 500).json({
-    message: err?.message || "Internal Server Error",
-  });
-});
-
 app.get("/", (req, res) => {
   res.send("TripVault Server is Running");
 });
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error("GLOBAL ERROR:", err);
+
+  res.status(err.statusCode || 500).json({
+    message: err.message || "Internal Server Error",
+  });
+});
+
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected successfully");
 
-    app.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.log("MongoDB connection failed:", error.message);
+    console.error("MongoDB connection failed:", error.message);
+    process.exit(1);
   });
