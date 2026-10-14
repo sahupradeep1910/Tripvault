@@ -17,20 +17,25 @@ const allowedOrigins = [
   "http://localhost:5173",
 ];
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+// CORS configuration — keep this before routes
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 204,
+};
 
+app.use(cors(corsOptions));
+
+// Handle JSON request bodies
 app.use(express.json());
 
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/users", profileRoutes);
 
+// Health check
 app.get("/", (req, res) => {
   res.send("TripVault Server is Running");
 });
@@ -59,4 +64,3 @@ mongoose
     console.error("MongoDB connection failed:", error.message);
     process.exit(1);
   });
-
