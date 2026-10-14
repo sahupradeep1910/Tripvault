@@ -17,7 +17,6 @@ const allowedOrigins = [
   "http://localhost:5173",
 ];
 
-// CORS configuration — keep this before routes
 const corsOptions = {
   origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -25,9 +24,12 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
+// CORS middleware before all routes
 app.use(cors(corsOptions));
 
-// Handle JSON request bodies
+// Explicitly handle preflight requests (Express 5)
+app.options(/.*/, cors(corsOptions));
+
 app.use(express.json());
 
 // API routes
