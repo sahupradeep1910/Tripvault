@@ -72,7 +72,19 @@ function PublicProfile() {
           marginBottom: "30px",
         }}
       >
-        <h1>{user.name}</h1>
+        <h1
+          style={{
+            color: "#172554",
+            opacity: 1,
+            visibility: "visible",
+            WebkitTextFillColor: "#172554",
+            fontSize: "42px",
+            fontWeight: 800,
+            margin: "10px 0 20px",
+          }}
+        >
+          {user.name}
+        </h1>
 
         <p>
           <strong>@{user.username}</strong>
@@ -86,7 +98,15 @@ function PublicProfile() {
       </div>
 
       {/* TRIPS */}
-      <h2>My Trips ✈️</h2>
+      <h2
+        style={{
+          color: "#172554",
+          opacity: 1,
+          WebkitTextFillColor: "#172554",
+        }}
+      >
+        My Trips ✈️
+      </h2>
 
       {trips.length === 0 ? (
         <p>No public trips yet.</p>
