@@ -250,3 +250,18 @@ Keep credentials and secret keys private. Never commit `.env` files containing r
 ## 📄 License
 
 This project was developed for learning and portfolio purposes. Add a specific open-source license if you intend to distribute it under one.
+## 📸 Project Screenshots
+
+### Dashboard
+![TripVault Dashboard](images/image_dashboard.png)
+
+### Trip Details
+![Trip Details](images/home.png)
+![TripVault Dashboard](images/home!.png)
+
+### Public Profile
+![Public Profile](images/public_profile.png)
+
+### Profile_Creation
+![Public Profile](images/profile_create.png)
+![Public Profile](images/profile_create1.png)
