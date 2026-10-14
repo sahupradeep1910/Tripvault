@@ -1,3 +1,4 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -11,7 +12,19 @@ const profileRoutes = require("./routes/profile");
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  "https://tripvault-chi.vercel.app",
+  "http://localhost:5173",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -46,3 +59,4 @@ mongoose
     console.error("MongoDB connection failed:", error.message);
     process.exit(1);
   });
+
