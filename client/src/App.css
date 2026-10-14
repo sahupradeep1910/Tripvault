@@ -182,3 +182,2016 @@
     border-right-color: var(--border);
   }
 }
+
+.tv-app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tv-app-content {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.tv-dashboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 36px);
+  box-sizing: border-box;
+  color: #1e293b;
+}
+
+.tv-welcome {
+  padding: clamp(20px, 4vw, 32px);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border: 1px solid #dbeafe;
+  overflow-wrap: anywhere;
+}
+
+.tv-eyebrow {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tv-welcome h1 {
+  color: #173b6c;
+  font-size: clamp(24px, 5vw, 36px);
+  margin: 10px 0;
+}
+
+.tv-email {
+  color: #64748b;
+  overflow-wrap: anywhere;
+}
+
+.tv-profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tv-primary-btn,
+.tv-secondary-btn {
+  min-height: 42px;
+  padding: 11px 16px;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tv-primary-btn {
+  color: #fff;
+  background: #245fce;
+  border: 1px solid #245fce;
+}
+
+.tv-primary-btn:hover {
+  background: #1949a8;
+}
+
+.tv-secondary-btn {
+  color: #245fce;
+  background: #fff;
+  border: 1px solid #cbdcf8;
+}
+
+.tv-trips-section {
+  margin-top: 32px;
+  min-width: 0;
+}
+
+.tv-trips-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.tv-trips-header h2 {
+  color: #173b6c;
+  margin-bottom: 6px;
+}
+
+.tv-trips-header p {
+  color: #64748b;
+  margin-top: 0;
+}
+
+.tv-trip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  min-width: 0;
+}
+
+.tv-trip-item {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.tv-trip-form-wrapper {
+  margin: 20px 0;
+  padding: clamp(12px, 3vw, 22px);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  min-width: 0;
+}
+
+.tv-empty-state {
+  padding: 36px 20px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+}
+
+.tv-empty-icon {
+  font-size: 42px;
+}
+
+.tv-empty-state h3 {
+  color: #173b6c;
+}
+
+.tv-empty-state p {
+  max-width: 460px;
+  margin: 10px auto 20px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.tv-loading {
+  padding: 18px;
+  color: #475569;
+}
+
+.tv-error {
+  color: #b91c1c;
+}
+
+.tv-toast {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1px solid;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+
+.tv-toast-success {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.tv-toast-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.tv-toast button {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .tv-trip-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tv-trips-header {
+    align-items: stretch;
+  }
+
+  .tv-trips-header .tv-primary-btn {
+    width: 100%;
+  }
+
+  .tv-profile-actions > button {
+    flex: 1 1 130px;
+  }
+}
+
+.tv-auth-page {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+  color: #1e293b;
+}
+
+.tv-auth-card {
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+  padding: clamp(22px, 5vw, 36px);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 16px 45px rgba(23, 59, 108, 0.09);
+}
+
+.tv-auth-brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.tv-auth-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #245fce;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.tv-auth-brand h1 {
+  margin: 10px 0 4px;
+  color: #173b6c;
+  font-size: 30px;
+}
+
+.tv-auth-brand p,
+.tv-auth-subtitle {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.tv-auth-card h2 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.tv-auth-subtitle {
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+.tv-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tv-auth-form label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.tv-auth-form input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #1e293b;
+  font: inherit;
+}
+
+.tv-auth-form input:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #245fce;
+}
+
+.tv-auth-form input:disabled {
+  background: #f1f5f9;
+}
+
+.tv-auth-submit {
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 9px;
+  background: #245fce;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tv-auth-submit:hover:not(:disabled) {
+  background: #1949a8;
+}
+
+.tv-auth-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.tv-auth-switch {
+  margin: 22px 0 0;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.tv-auth-switch a {
+  color: #245fce;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tv-auth-switch a:hover {
+  text-decoration: underline;
+}
+
+.tv-auth-toast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid;
+  border-radius: 9px;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.tv-auth-toast-success {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.tv-auth-toast-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.tv-auth-toast button {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 375px) {
+  .tv-auth-page {
+    padding: 16px 12px;
+  }
+
+  .tv-auth-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+}
+
+/* TripVault Login & Authentication */
+
+.tv-auth-page {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(circle at top left, #dbeafe 0, transparent 38%),
+    radial-gradient(circle at bottom right, #ede9fe 0, transparent 35%),
+    #f8fafc;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tv-auth-card {
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+  padding: 36px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.09);
+}
+
+.tv-auth-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #2563eb;
+  font-size: 29px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.tv-auth-brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  color: #ffffff;
+  background: #2563eb;
+  font-size: 23px;
+}
+
+.tv-auth-heading {
+  margin: 30px 0 26px;
+  text-align: center;
+}
+
+.tv-auth-eyebrow {
+  margin-bottom: 10px;
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.tv-auth-heading h1 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.tv-auth-heading > p:last-child {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tv-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.tv-auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tv-auth-field label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tv-auth-field input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 14px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tv-auth-field input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.tv-auth-submit {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 5px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.tv-auth-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.tv-auth-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.tv-auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 0 20px;
+  color: #9ca3af;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.tv-auth-divider::before,
+.tv-auth-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #e5e7eb;
+}
+
+.tv-auth-switch {
+  margin: 0;
+  color: #6b7280;
+  text-align: center;
+  font-size: 13px;
+}
+
+.tv-auth-switch a {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tv-auth-switch a:hover {
+  text-decoration: underline;
+}
+
+.tv-auth-terms {
+  margin: 22px 0 0;
+  color: #9ca3af;
+  font-size: 11px;
+  text-align: center;
+}
+
+.tv-auth-toast {
+  position: fixed;
+  z-index: 1000;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tv-auth-toast-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.tv-auth-toast-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 480px) {
+  .tv-auth-page {
+    padding: 20px 14px;
+  }
+
+  .tv-auth-card {
+    padding: 28px 21px;
+    border-radius: 18px;
+  }
+
+  .tv-auth-heading h1 {
+    font-size: 26px;
+  }
+
+  .tv-auth-toast {
+    top: 12px;
+    right: 12px;
+    max-width: calc(100vw - 24px);
+  }
+}
+
+.tv-trip-form {
+  width: 100%;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: clamp(20px, 4vw, 36px);
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.055),
+    0 2px 7px rgba(15, 23, 42, 0.025);
+
+  color: #172554;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Form heading */
+
+.tv-trip-form-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+
+  padding-bottom: 26px;
+  margin-bottom: 28px;
+
+  border-bottom: 1px solid #edf1f7;
+}
+
+.tv-trip-form-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 17px;
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
+
+  font-size: 25px;
+}
+
+.tv-trip-form-eyebrow {
+  margin: 2px 0 8px;
+
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.tv-trip-form-heading h2 {
+  margin: 0 0 9px;
+  color: #172554;
+
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.25;
+  letter-spacing: -0.7px;
+}
+
+.tv-trip-form-subtitle {
+  margin: 0;
+
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Responsive form grid */
+
+.tv-trip-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 22px;
+  width: 100%;
+  min-width: 0;
+}
+
+.tv-trip-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.tv-trip-field-full {
+  grid-column: 1 / -1;
+}
+
+/* Labels */
+
+.tv-trip-field > label {
+  display: block;
+  margin: 0;
+
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Inputs, dropdowns and textarea */
+
+.tv-trip-field input:not([type="file"]),
+.tv-trip-field select,
+.tv-trip-field textarea {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  padding: 14px 15px;
+
+  border: 1px solid #dbe3ef;
+  border-radius: 12px;
+
+  background-color: #f8faff;
+  color: #172554;
+
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tv-trip-field input:not([type="file"]),
+.tv-trip-field select {
+  min-height: 49px;
+}
+
+.tv-trip-field input::placeholder,
+.tv-trip-field textarea::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+
+.tv-trip-field input:not([type="file"]):hover,
+.tv-trip-field select:hover,
+.tv-trip-field textarea:hover {
+  border-color: #a8c4fa;
+  background-color: #ffffff;
+}
+
+.tv-trip-field input:not([type="file"]):focus,
+.tv-trip-field select:focus,
+.tv-trip-field textarea:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.11);
+}
+
+.tv-trip-field input:disabled,
+.tv-trip-field select:disabled,
+.tv-trip-field textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.tv-trip-field select {
+  cursor: pointer;
+}
+
+.tv-trip-field textarea {
+  min-height: 145px;
+  resize: vertical;
+}
+
+/* Small helper text */
+
+.tv-trip-field-hint {
+  margin-top: -2px;
+
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Photo upload area */
+
+.tv-trip-upload {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  padding: 19px;
+
+  border: 1.5px dashed #b9cbed;
+  border-radius: 15px;
+
+  background: linear-gradient(135deg, #f8fbff, #f5f7ff);
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.tv-trip-upload:hover {
+  border-color: #6095f5;
+  background: #f0f6ff;
+}
+
+.tv-trip-upload-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 14px;
+  background: #e3edff;
+
+  font-size: 23px;
+}
+
+.tv-trip-upload-copy {
+  display: flex;
+  flex: 1 1 160px;
+  flex-direction: column;
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.tv-trip-upload-copy strong {
+  color: #1e3a8a;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tv-trip-upload-copy span {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.tv-trip-upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  box-sizing: border-box;
+  padding: 10px 14px;
+
+  border: 1px solid #c7d9fc;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #245fce;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.tv-trip-upload-button:hover {
+  border-color: #245fce;
+  background: #eff6ff;
+}
+
+.tv-trip-file-input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.tv-trip-file-input:focus-visible + .tv-trip-upload-button {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* Error message */
+
+.tv-trip-form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-bottom: 24px;
+  padding: 14px 16px;
+
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+
+  background: #fef2f2;
+  color: #991b1b;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+.tv-trip-form-error span:first-child {
+  flex-shrink: 0;
+}
+
+/* Form action buttons */
+
+.tv-trip-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 30px;
+  padding-top: 24px;
+
+  border-top: 1px solid #edf1f7;
+}
+
+.tv-trip-submit-button,
+.tv-trip-cancel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 13px 22px;
+
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.tv-trip-submit-button {
+  border: 1px solid #2563eb;
+
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: #ffffff;
+
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.17);
+}
+
+.tv-trip-submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.23);
+}
+
+.tv-trip-cancel-button {
+  border: 1px solid #dbe3ef;
+  background: #ffffff;
+  color: #475569;
+}
+
+.tv-trip-cancel-button:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.tv-trip-submit-button:disabled,
+.tv-trip-cancel-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.tv-trip-submit-button:focus-visible,
+.tv-trip-cancel-button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* Form footer */
+
+.tv-trip-form-footer {
+  margin: 20px 0 0;
+
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Tablet and mobile layout */
+
+@media (max-width: 600px) {
+  .tv-trip-form {
+    margin: 16px auto;
+    padding: 21px 16px;
+    border-radius: 17px;
+  }
+
+  .tv-trip-form-heading {
+    gap: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 22px;
+  }
+
+  .tv-trip-form-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 21px;
+  }
+
+  .tv-trip-form-eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .tv-trip-form-heading h2 {
+    font-size: 23px;
+  }
+
+  .tv-trip-form-subtitle {
+    font-size: 13px;
+  }
+
+  .tv-trip-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 19px;
+  }
+
+  .tv-trip-field-full {
+    grid-column: auto;
+  }
+
+  .tv-trip-field input:not([type="file"]),
+  .tv-trip-field select,
+  .tv-trip-field textarea {
+    font-size: 16px;
+  }
+
+  .tv-trip-upload {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .tv-trip-upload-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+
+  .tv-trip-upload-button {
+    width: 100%;
+  }
+
+  .tv-trip-form-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .tv-trip-submit-button,
+  .tv-trip-cancel-button {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tv-trip-form *,
+  .tv-trip-form *::before,
+  .tv-trip-form *::after {
+    transition: none !important;
+  }
+}
+
+.tv-dashboard {
+  color: #24324b;
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.tv-welcome {
+  background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 55%, #ffffff 100%);
+  border: 1px solid #dbe7fb;
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(37, 66, 120, 0.07);
+}
+
+.tv-welcome .tv-eyebrow {
+  color: #4f46e5;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tv-welcome h1 {
+  color: #172554;
+  font-size: clamp(27px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.25;
+}
+
+.tv-welcome p,
+.tv-dashboard .tv-email {
+  color: #52627a;
+  font-size: 15px;
+}
+
+.tv-trips-header h2 {
+  color: #172554;
+  font-size: clamp(23px, 3vw, 29px);
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.tv-trips-header p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.tv-primary-btn,
+.tv-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 18px;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tv-primary-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  border: 1px solid #315eea;
+  box-shadow: 0 5px 13px rgba(37, 99, 235, 0.17);
+}
+
+.tv-primary-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #4338ca);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+}
+
+.tv-secondary-btn {
+  color: #334b80;
+  background: #ffffff;
+  border: 1px solid #d5e1f5;
+}
+
+.tv-secondary-btn:hover {
+  background: #eff6ff;
+  border-color: #9dbcf5;
+}
+
+.tv-empty-state {
+  padding: 40px 22px;
+  background: linear-gradient(145deg, #ffffff, #f8faff);
+  border: 1px solid #e0e8f5;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(30, 64, 120, 0.045);
+}
+
+.tv-empty-icon {
+  margin-bottom: 12px;
+  font-size: 44px;
+}
+
+.tv-empty-state h3 {
+  margin: 8px 0 12px;
+  color: #172554;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.tv-empty-state p {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.tv-trip-form-wrapper {
+  padding: clamp(18px, 3vw, 30px);
+  background: #ffffff;
+  border: 1px solid #e0e8f5;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(30, 64, 120, 0.06);
+}
+
+.tv-dashboard button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .tv-welcome {
+    border-radius: 17px;
+  }
+
+  .tv-welcome h1 {
+    font-size: 27px;
+    letter-spacing: -0.7px;
+  }
+
+  .tv-empty-state {
+    padding: 30px 16px;
+  }
+
+  .tv-empty-state h3 {
+    font-size: 21px;
+  }
+
+  .tv-profile-actions > button {
+    min-height: 44px;
+  }
+}
+
+.tv-trip-form {
+  width: min(100%, 860px) !important;
+  margin: 28px auto !important;
+  padding: clamp(24px, 4vw, 42px) !important;
+  box-sizing: border-box !important;
+
+  background: #ffffff !important;
+  color: #172554 !important;
+  text-align: left !important;
+
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 24px !important;
+
+  box-shadow:
+    0 24px 60px rgba(30, 41, 59, 0.08),
+    0 4px 14px rgba(37, 99, 235, 0.04) !important;
+
+  font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Header */
+
+.tv-trip-form .tv-trip-form-heading {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+
+  padding-bottom: 28px !important;
+  margin-bottom: 30px !important;
+
+  border-bottom: 1px solid #edf1f7 !important;
+}
+
+.tv-trip-form .tv-trip-form-icon {
+  display: grid !important;
+  place-items: center !important;
+  flex-shrink: 0 !important;
+
+  width: 60px !important;
+  height: 60px !important;
+
+  border-radius: 18px !important;
+  background: linear-gradient(135deg, #dbeafe, #ede9fe) !important;
+
+  font-size: 27px !important;
+}
+
+.tv-trip-form .tv-trip-form-eyebrow {
+  margin: 0 0 8px !important;
+  color: #4f46e5 !important;
+
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 2px !important;
+}
+
+.tv-trip-form .tv-trip-form-heading h2 {
+  margin: 0 0 8px !important;
+  color: #172554 !important;
+
+  font-size: clamp(25px, 3vw, 32px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.8px !important;
+  text-align: left !important;
+}
+
+.tv-trip-form .tv-trip-form-subtitle {
+  margin: 0 !important;
+  color: #64748b !important;
+
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+
+/* Two-column form layout */
+
+.tv-trip-form .tv-trip-form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 25px 22px !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.tv-trip-form .tv-trip-field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 9px !important;
+
+  min-width: 0 !important;
+  text-align: left !important;
+}
+
+.tv-trip-form .tv-trip-field-full {
+  grid-column: 1 / -1 !important;
+}
+
+/* Field labels */
+
+.tv-trip-form .tv-trip-field > label {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #334155 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
+}
+
+/* Inputs, date fields, dropdown and textarea */
+
+.tv-trip-form .tv-trip-field input:not([type="file"]),
+.tv-trip-form .tv-trip-field select,
+.tv-trip-form .tv-trip-field textarea {
+  display: block !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+
+  padding: 14px 15px !important;
+
+  border: 1px solid #dbe3ef !important;
+  border-radius: 12px !important;
+
+  background: #f8faff !important;
+  color: #172554 !important;
+  color-scheme: light !important;
+
+  font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+
+  outline: none !important;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease !important;
+}
+
+.tv-trip-form .tv-trip-field input:not([type="file"]),
+.tv-trip-form .tv-trip-field select {
+  min-height: 50px !important;
+}
+
+.tv-trip-form .tv-trip-field textarea {
+  min-height: 140px !important;
+  resize: vertical !important;
+}
+
+.tv-trip-form .tv-trip-field input::placeholder,
+.tv-trip-form .tv-trip-field textarea::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.tv-trip-form .tv-trip-field input:not([type="file"]):hover,
+.tv-trip-form .tv-trip-field select:hover,
+.tv-trip-form .tv-trip-field textarea:hover {
+  border-color: #a5bff4 !important;
+  background: #ffffff !important;
+}
+
+.tv-trip-form .tv-trip-field input:not([type="file"]):focus,
+.tv-trip-form .tv-trip-field select:focus,
+.tv-trip-form .tv-trip-field textarea:focus {
+  border-color: #4f7df3 !important;
+  background: #ffffff !important;
+
+  box-shadow: 0 0 0 4px rgba(79, 125, 243, 0.12) !important;
+}
+
+.tv-trip-form .tv-trip-field select {
+  cursor: pointer !important;
+}
+
+.tv-trip-form .tv-trip-field-hint {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+}
+
+/* Photo uploader */
+
+.tv-trip-form .tv-trip-upload {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 20px !important;
+
+  border: 1.5px dashed #b8c9eb !important;
+  border-radius: 16px !important;
+
+  background: linear-gradient(135deg, #f8fbff, #f6f5ff) !important;
+
+  transition: border-color 0.2s ease, background 0.2s ease !important;
+}
+
+.tv-trip-form .tv-trip-upload:hover {
+  border-color: #668ef0 !important;
+  background: #f1f6ff !important;
+}
+
+.tv-trip-form .tv-trip-upload-icon {
+  display: grid !important;
+  place-items: center !important;
+  flex-shrink: 0 !important;
+
+  width: 50px !important;
+  height: 50px !important;
+
+  border-radius: 15px !important;
+  background: #e5edff !important;
+
+  font-size: 24px !important;
+}
+
+.tv-trip-form .tv-trip-upload-copy {
+  display: flex !important;
+  flex: 1 1 160px !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  min-width: 0 !important;
+}
+
+.tv-trip-form .tv-trip-upload-copy strong {
+  color: #1e3a8a !important;
+  font-size: 14px !important;
+}
+
+.tv-trip-form .tv-trip-upload-copy span {
+  color: #64748b !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.tv-trip-form .tv-trip-upload-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 42px !important;
+  padding: 10px 16px !important;
+
+  border: 1px solid #cbd9f5 !important;
+  border-radius: 10px !important;
+
+  background: #ffffff !important;
+  color: #315bd4 !important;
+
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+}
+
+.tv-trip-form .tv-trip-upload-button:hover {
+  background: #eff6ff !important;
+  border-color: #668ef0 !important;
+}
+
+.tv-trip-form .tv-trip-file-input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.tv-trip-form .tv-trip-file-input:focus-visible + .tv-trip-upload-button {
+  outline: 3px solid #93c5fd !important;
+  outline-offset: 3px !important;
+}
+
+/* Error state */
+
+.tv-trip-form .tv-trip-form-error {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+
+  margin: 0 0 24px !important;
+  padding: 14px 16px !important;
+
+  border: 1px solid #fecaca !important;
+  border-radius: 12px !important;
+
+  background: #fff1f2 !important;
+  color: #9f1239 !important;
+
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Action buttons */
+
+.tv-trip-form .tv-trip-form-actions {
+  display: flex !important;
+  justify-content: flex-end !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+
+  margin-top: 30px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid #edf1f7 !important;
+}
+
+.tv-trip-form .tv-trip-submit-button,
+.tv-trip-form .tv-trip-cancel-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-height: 49px !important;
+  padding: 13px 22px !important;
+  box-sizing: border-box !important;
+
+  border-radius: 12px !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.tv-trip-form .tv-trip-submit-button {
+  border: 1px solid #315eea !important;
+  background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+  color: #ffffff !important;
+
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2) !important;
+}
+
+.tv-trip-form .tv-trip-submit-button:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.26) !important;
+}
+
+.tv-trip-form .tv-trip-cancel-button {
+  border: 1px solid #dbe3ef !important;
+  background: #ffffff !important;
+  color: #475569 !important;
+}
+
+.tv-trip-form .tv-trip-cancel-button:hover:not(:disabled) {
+  background: #f1f5f9 !important;
+}
+
+.tv-trip-form .tv-trip-submit-button:disabled,
+.tv-trip-form .tv-trip-cancel-button:disabled {
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.tv-trip-form .tv-trip-submit-button:focus-visible,
+.tv-trip-form .tv-trip-cancel-button:focus-visible {
+  outline: 3px solid #93c5fd !important;
+  outline-offset: 3px !important;
+}
+
+/* Footer note */
+
+.tv-trip-form .tv-trip-form-footer {
+  margin: 20px 0 0 !important;
+  color: #8b9ab2 !important;
+  font-size: 12px !important;
+  text-align: center !important;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .tv-trip-form {
+    width: 100% !important;
+    margin: 16px auto !important;
+    padding: 22px 17px !important;
+    border-radius: 18px !important;
+  }
+
+  .tv-trip-form .tv-trip-form-heading {
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding-bottom: 22px !important;
+    margin-bottom: 23px !important;
+  }
+
+  .tv-trip-form .tv-trip-form-icon {
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 13px !important;
+    font-size: 21px !important;
+  }
+
+  .tv-trip-form .tv-trip-form-heading h2 {
+    font-size: 24px !important;
+  }
+
+  .tv-trip-form .tv-trip-form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .tv-trip-form .tv-trip-field-full {
+    grid-column: auto !important;
+  }
+
+  .tv-trip-form .tv-trip-field input:not([type="file"]),
+  .tv-trip-form .tv-trip-field select,
+  .tv-trip-form .tv-trip-field textarea {
+    font-size: 16px !important;
+  }
+
+  .tv-trip-form .tv-trip-upload {
+    padding: 15px !important;
+  }
+
+  .tv-trip-form .tv-trip-upload-button {
+    width: 100% !important;
+  }
+
+  .tv-trip-form .tv-trip-form-actions {
+    flex-direction: column-reverse !important;
+    gap: 10px !important;
+  }
+
+  .tv-trip-form .tv-trip-submit-button,
+  .tv-trip-form .tv-trip-cancel-button {
+    width: 100% !important;
+  }
+}
+
+/* Keep the TripVault form properly contained */
+.tv-trip-form-wrapper {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.tv-dashboard .tv-welcome h1 {
+  color: #172554 !important;
+  font-weight: 800;
+}
+
+.tv-dashboard .tv-trips-header h2 {
+  color: #172554 !important;
+  font-weight: 800;
+}
+
+/* Trip form alignment fix */
+.tv-trip-form {
+  display: block !important;
+  width: 100% !important;
+  max-width: 860px !important;
+  margin: 0 auto !important;
+  padding: 28px !important;
+  box-sizing: border-box !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  color: #172554 !important;
+  text-align: left !important;
+}
+
+.tv-trip-form .tv-trip-form-heading {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.tv-trip-form .tv-trip-form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+}
+
+.tv-trip-form .tv-trip-field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+
+.tv-trip-form .tv-trip-field-full {
+  grid-column: 1 / -1 !important;
+}
+
+.tv-trip-form .tv-trip-field > label {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #334155 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.tv-trip-form .tv-trip-field input:not([type="file"]),
+.tv-trip-form .tv-trip-field select,
+.tv-trip-form .tv-trip-field textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 13px 14px !important;
+  border: 1px solid #dbe3ef !important;
+  border-radius: 10px !important;
+  background: #f8faff !important;
+  color: #172554 !important;
+  font: 14px/1.5 "Segoe UI", Arial, sans-serif !important;
+}
+
+.tv-trip-form .tv-trip-field textarea {
+  min-height: 130px !important;
+}
+
+.tv-trip-form .tv-trip-field input:focus,
+.tv-trip-form .tv-trip-field select:focus,
+.tv-trip-form .tv-trip-field textarea:focus {
+  outline: none !important;
+  border-color: #3b82f6 !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12) !important;
+}
+
+@media (max-width: 600px) {
+  .tv-trip-form {
+    padding: 20px 16px !important;
+  }
+
+  .tv-trip-form .tv-trip-form-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .tv-trip-form .tv-trip-field-full {
+    grid-column: auto !important;
+  }
+}
+
+/* ===== Premium Trip Cards ===== */
+
+.tv-trip-card {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e5eaf2;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(20, 35, 65, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.tv-trip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(20, 35, 65, 0.12);
+}
+
+.tv-trip-card-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin: 0;
+}
+
+.tv-trip-card-content {
+  padding: 20px;
+}
+
+.tv-trip-card-title {
+  margin: 0 0 16px;
+  color: #172554;
+  font-size: 22px;
+  font-weight: 750;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.tv-trip-card-info {
+  margin: 10px 0;
+  color: #526078;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.tv-trip-card-info strong {
+  color: #263650;
+  font-weight: 650;
+}
+
+.tv-trip-card-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tv-trip-card-description {
+  margin: 14px 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.tv-trip-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid #edf0f5;
+}
+
+.tv-trip-btn {
+  min-height: 42px;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.tv-trip-btn:hover {
+  transform: translateY(-1px);
+}
+
+.tv-trip-btn:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.tv-trip-btn-view {
+  flex: 1 1 130px;
+  color: #ffffff;
+  background: #3157d5;
+}
+
+.tv-trip-btn-view:hover {
+  background: #2446b8;
+}
+
+.tv-trip-btn-edit {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #dbeafe;
+}
+
+.tv-trip-btn-edit:hover {
+  background: #dbeafe;
+}
+
+.tv-trip-btn-delete {
+  color: #b91c1c;
+  background: #fff1f2;
+  border-color: #ffe4e6;
+}
+
+.tv-trip-btn-delete:hover {
+  background: #ffe4e6;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .tv-trip-card-content {
+    padding: 15px;
+  }
+
+  .tv-trip-card-image {
+    height: 190px;
+  }
+
+  .tv-trip-card-title {
+    font-size: 19px;
+  }
+
+  .tv-trip-card-dates {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .tv-trip-card-actions {
+    gap: 8px;
+  }
+
+  .tv-trip-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .tv-trip-btn-view {
+    flex-basis: 100%;
+  }
+
+  .tv-trip-btn-edit,
+  .tv-trip-btn-delete {
+    flex: 1;
+  }
+}

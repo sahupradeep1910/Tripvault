@@ -32,12 +32,11 @@ function TripDetails() {
         );
 
         setTrip(response.data);
-      } catch (error) {
-        console.error("Error fetching trip:", error);
-
+      } catch (err) {
+        console.error("Error fetching trip:", err);
         setError(
-          error.response?.data?.message ||
-            "Failed to load trip"
+          err.response?.data?.message ||
+            "Failed to load trip. Please try again."
         );
       } finally {
         setLoading(false);
@@ -48,116 +47,265 @@ function TripDetails() {
   }, [id, navigate]);
 
   if (loading) {
-    return <p>Loading trip...</p>;
+    return (
+      <main style={styles.messagePage}>
+        <p style={styles.messageText}>Loading trip...</p>
+      </main>
+    );
   }
 
   if (error) {
     return (
-      <div>
-        <p>{error}</p>
-        <button onClick={() => navigate("/dashboard")}>
+      <main style={styles.messagePage}>
+        <p style={styles.errorText}>{error}</p>
+        <button
+          type="button"
+          style={styles.button}
+          onClick={() => navigate("/dashboard")}
+        >
           ← Back to Dashboard
         </button>
-      </div>
+      </main>
     );
   }
 
   if (!trip) {
-    return <p>Trip not found.</p>;
+    return (
+      <main style={styles.messagePage}>
+        <p style={styles.messageText}>Trip not found.</p>
+        <button
+          type="button"
+          style={styles.button}
+          onClick={() => navigate("/dashboard")}
+        >
+          ← Back to Dashboard
+        </button>
+      </main>
+    );
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <button onClick={() => navigate("/dashboard")}>
-        ← Back to Dashboard
-      </button>
+    <main style={styles.page}>
+      <div style={styles.container}>
+        <button
+          type="button"
+          style={styles.button}
+          onClick={() => navigate("/dashboard")}
+        >
+          ← Back to Dashboard
+        </button>
 
-      <h1>{trip.title}</h1>
+        <h1 style={styles.title}>{trip.title}</h1>
 
-      <p>
-        <strong>Destination:</strong> {trip.destination}
-      </p>
+        <section style={styles.detailsCard}>
+          <p style={styles.detail}>
+            <strong>Destination:</strong>{" "}
+            {trip.destination || "Not specified"}
+          </p>
 
-      <p>
-        <strong>Start Date:</strong>{" "}
-        {trip.startDate
-          ? new Date(trip.startDate).toLocaleDateString()
-          : "Not specified"}
-      </p>
+          <p style={styles.detail}>
+            <strong>Start Date:</strong>{" "}
+            {trip.startDate
+              ? new Date(trip.startDate).toLocaleDateString()
+              : "Not specified"}
+          </p>
 
-      <p>
-        <strong>End Date:</strong>{" "}
-        {trip.endDate
-          ? new Date(trip.endDate).toLocaleDateString()
-          : "Not specified"}
-      </p>
+          <p style={styles.detail}>
+            <strong>End Date:</strong>{" "}
+            {trip.endDate
+              ? new Date(trip.endDate).toLocaleDateString()
+              : "Not specified"}
+          </p>
 
-      <p>
-        <strong>Rating:</strong>{" "}
-        {trip.rating
-          ? `${trip.rating}/5 ⭐`
-          : "Not rated"}
-      </p>
+          <p style={styles.detail}>
+            <strong>Rating:</strong>{" "}
+            {trip.rating ? `${trip.rating}/5 ⭐` : "Not rated"}
+          </p>
 
-      {trip.description && (
-        <p>
-          <strong>Description:</strong> {trip.description}
-        </p>
-      )}
+          {trip.description && (
+            <p style={styles.description}>
+              <strong>Description:</strong> {trip.description}
+            </p>
+          )}
+        </section>
 
-      {/* COVER IMAGE */}
-      {trip.coverImage && (
-        <div style={{ marginTop: "20px" }}>
-          <h2>Cover Photo</h2>
+        {trip.coverImage && (
+          <section style={styles.section}>
+            <h2 style={styles.heading}>Cover Photo</h2>
 
-          <img
-            src={trip.coverImage}
-            alt={trip.title}
-            style={{
-              width: "100%",
-              maxWidth: "600px",
-              height: "300px",
-              objectFit: "cover",
-              borderRadius: "10px",
-            }}
-          />
-        </div>
-      )}
-
-      {/* PHOTO GRID */}
-      <div style={{ marginTop: "30px" }}>
-        <h2>Trip Photos 📸</h2>
-
-        {trip.photos && trip.photos.length > 0 ? (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "15px",
-              marginTop: "15px",
-            }}
-          >
-            {trip.photos.map((photo, index) => (
-              <img
-                key={index}
-                src={photo}
-                alt={`${trip.title} ${index + 1}`}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover",
-                  borderRadius: "10px",
-                }}
-              />
-            ))}
-          </div>
-        ) : (
-          <p>No photos uploaded yet.</p>
+            <img
+              src={trip.coverImage}
+              alt={`${trip.title} cover`}
+              style={styles.coverImage}
+            />
+          </section>
         )}
+
+        <section style={styles.section}>
+          <h2 style={styles.heading}>Trip Photos 📸</h2>
+
+          {trip.photos?.length > 0 ? (
+            <div style={styles.photoGrid}>
+              {trip.photos.map((photo, index) => (
+                <img
+                  key={`${photo}-${index}`}
+                  src={photo}
+                  alt={`${trip.title} photo ${index + 1}`}
+                  loading="lazy"
+                  style={styles.photo}
+                />
+              ))}
+            </div>
+          ) : (
+            <p style={styles.emptyState}>
+              No photos uploaded yet.
+            </p>
+          )}
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
+
+const styles = {
+  page: {
+    width: "100%",
+    minHeight: "100vh",
+    boxSizing: "border-box",
+    padding: "clamp(14px, 3vw, 30px)",
+    background: "#f1f5f9",
+    color: "#1e293b",
+    overflowWrap: "anywhere",
+  },
+
+  container: {
+    width: "100%",
+    maxWidth: "1000px",
+    margin: "0 auto",
+    boxSizing: "border-box",
+    minWidth: 0,
+  },
+
+  title: {
+    color: "#173b6c",
+    fontSize: "clamp(1.7rem, 5vw, 2.5rem)",
+    lineHeight: 1.2,
+    margin: "24px 0 18px",
+    overflowWrap: "anywhere",
+  },
+
+  detailsCard: {
+    padding: "clamp(14px, 3vw, 22px)",
+    background: "#ffffff",
+    border: "1px solid #e2e8f0",
+    borderRadius: "14px",
+    boxSizing: "border-box",
+    width: "100%",
+  },
+
+  detail: {
+    color: "#334155",
+    fontSize: "1rem",
+    lineHeight: 1.7,
+    margin: "8px 0",
+    overflowWrap: "anywhere",
+  },
+
+  description: {
+    color: "#334155",
+    lineHeight: 1.7,
+    whiteSpace: "pre-wrap",
+    overflowWrap: "anywhere",
+  },
+
+  section: {
+    marginTop: "30px",
+    width: "100%",
+    minWidth: 0,
+    boxSizing: "border-box",
+  },
+
+  heading: {
+    color: "#1e293b",
+    fontSize: "clamp(1.25rem, 4vw, 1.65rem)",
+    fontWeight: 750,
+    lineHeight: 1.3,
+    margin: "0 0 15px",
+    overflowWrap: "anywhere",
+  },
+
+  coverImage: {
+    display: "block",
+    width: "100%",
+    maxWidth: "650px",
+    height: "clamp(190px, 55vw, 360px)",
+    objectFit: "cover",
+    borderRadius: "12px",
+    background: "#e2e8f0",
+  },
+
+  photoGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: "12px",
+    width: "100%",
+    minWidth: 0,
+    boxSizing: "border-box",
+  },
+
+  photo: {
+    display: "block",
+    width: "100%",
+    minWidth: 0,
+    height: "clamp(115px, 32vw, 220px)",
+    objectFit: "cover",
+    borderRadius: "10px",
+    background: "#e2e8f0",
+  },
+
+  emptyState: {
+    padding: "18px",
+    color: "#475569",
+    background: "#ffffff",
+    border: "1px solid #e2e8f0",
+    borderRadius: "10px",
+    lineHeight: 1.6,
+  },
+
+  button: {
+    display: "inline-block",
+    maxWidth: "100%",
+    boxSizing: "border-box",
+    padding: "11px 16px",
+    border: "none",
+    borderRadius: "9px",
+    background: "#245fce",
+    color: "#ffffff",
+    fontSize: "14px",
+    fontWeight: 700,
+    cursor: "pointer",
+  },
+
+  messagePage: {
+    width: "100%",
+    minHeight: "50vh",
+    boxSizing: "border-box",
+    padding: "24px 16px",
+    textAlign: "center",
+    overflowWrap: "anywhere",
+    color: "#1e293b",
+  },
+
+  messageText: {
+    fontSize: "1rem",
+    color: "#334155",
+  },
+
+  errorText: {
+    fontSize: "1rem",
+    color: "#b91c1c",
+    marginBottom: "18px",
+  },
+};
 
 export default TripDetails;

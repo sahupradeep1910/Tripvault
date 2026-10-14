@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/login";
@@ -7,14 +8,27 @@ import TripDetails from "./pages/TripDetails";
 import PublicProfile from "./pages/PublicProfile";
 import EditProfile from "./pages/EditProfile";
 
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;
+}
+
+function AppLayout({ children }) {
+  return (
+    <div className="tv-app-layout">
+      <Navbar />
+      <div className="tv-app-content">{children}</div>
+      <Footer />
+    </div>
+  );
 }
 
 function App() {
@@ -23,7 +37,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Navigate to="/login" />}
+          element={<Navigate to="/login" replace />}
         />
 
         <Route
@@ -40,7 +54,9 @@ function App() {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <AppLayout>
+                <Dashboard />
+              </AppLayout>
             </ProtectedRoute>
           }
         />
@@ -49,23 +65,25 @@ function App() {
           path="/trips/:id"
           element={
             <ProtectedRoute>
-              <TripDetails />
+              <AppLayout>
+                <TripDetails />
+              </AppLayout>
             </ProtectedRoute>
           }
         />
 
-        {/* PUBLIC PROFILE */}
         <Route
           path="/profile/:username"
           element={<PublicProfile />}
         />
 
-        {/* EDIT PROFILE */}
         <Route
           path="/edit-profile"
           element={
             <ProtectedRoute>
-              <EditProfile />
+              <AppLayout>
+                <EditProfile />
+              </AppLayout>
             </ProtectedRoute>
           }
         />

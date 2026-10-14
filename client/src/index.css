@@ -109,3 +109,64 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* TripVault global layout*/
+
+:root {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
+  color-scheme: light;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f8fafc;
+}
+
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: none;
+}
+
+/* Keep form controls consistent across browsers */
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+.tv-trip-form,
+.tv-auth-card {
+  text-align: left;
+}
+
+.tv-trip-form input,
+.tv-trip-form select,
+.tv-trip-form textarea {
+  color-scheme: light;
+}
+
+@media (max-width: 600px) {
+  #root {
+    width: 100%;
+    overflow-x: clip;
+  }
+}

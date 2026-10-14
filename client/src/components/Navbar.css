@@ -1,0 +1,129 @@
+.tv-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e8edf3;
+  box-shadow: 0 4px 18px rgba(25, 45, 75, 0.06);
+}
+
+.tv-nav-container {
+  max-width: 1200px;
+  min-height: 72px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.tv-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #173b6c;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.tv-brand-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3978f6, #2453bb);
+  border-radius: 12px;
+}
+
+.tv-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tv-nav-links a {
+  color: #334155;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tv-nav-links a:hover {
+  color: #2563eb;
+}
+
+.tv-logout-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 20px;
+  background: #245fce;
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.tv-logout-btn:hover {
+  background: #1949a8;
+  transform: translateY(-1px);
+}
+
+.tv-menu-toggle {
+  display: none;
+  border: 1px solid #dbe4f0;
+  border-radius: 9px;
+  padding: 8px 12px;
+  background: #ffffff;
+  color: #173b6c;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .tv-nav-container {
+    min-height: 64px;
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+
+  .tv-brand {
+    font-size: 1.3rem;
+  }
+
+  .tv-brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tv-menu-toggle {
+    display: block;
+  }
+
+  .tv-nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0;
+  }
+
+  .tv-nav-links.tv-nav-open {
+    display: flex;
+  }
+
+  .tv-nav-links a {
+    padding: 14px 8px;
+  }
+
+  .tv-logout-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
